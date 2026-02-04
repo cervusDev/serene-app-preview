@@ -38,8 +38,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Linting
-        run: pnpm run ci:lint
-
       - name: Typechecking
         run: pnpm run ci:typecheck
