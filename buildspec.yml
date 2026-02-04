@@ -18,18 +18,18 @@ phases:
 
   pre_build:
     commands:
-      - echo "Installing dependencies..."
+      - echo "SERENE - Installing dependencies..."
       - pnpm install --no-frozen-lockfile
 
-      - echo "Running lint..."
+      - echo "SERENE - Running lint..."
       - pnpm run ci:lint
 
-      - echo "Running typecheck..."
+      - echo "SERENE - Running typecheck..."
       - pnpm run ci:typecheck
   
   build:
     commands:
-      - echo "build..."
+      - echo "SERENE - build..."
       - pnpm run build
   
   post_build:
