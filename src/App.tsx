@@ -4,19 +4,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/public/Index";
 import { Toaster } from "./components/ui/toaster";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
-
 import Services from "./pages/public/Services";
 import Therapists from "./pages/public/Therapist";
 import Booking from "./pages/public/Booking";
 import NotFound from "./pages/public/NotFound";
-
 import Dashboard from "./pages/private/Dashboard";
 import DashBooking from "./pages/private/Booking";
 import DashClients from './pages/private/Clients';
 import DashTherapist from './pages/private/Therapist';
 import DashServices from './pages/private/Services';
 import DashSlots from './pages/private/Slots';
-
 const queryClient = new QueryClient();
 
 const App = () => (
