@@ -1,0 +1,45 @@
+name: serene-app-ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 1️⃣ Instala o pnpm ANTES do cache
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      # 2️⃣ Setup do Node + cache pnpm
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'pnpm'
+
+      # 3️⃣ (Opcional, mas recomendado) valida versão
+      - name: Verify versions
+        run: |
+          node --version
+          pnpm --version
+
+      # 4️⃣ Instala dependências de forma reprodutível
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Linting
+        run: pnpm run ci:lint
+
+      - name: Typechecking
+        run: pnpm run ci:typecheck
