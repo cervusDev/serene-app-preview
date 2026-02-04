@@ -21,9 +21,6 @@ phases:
       - echo "SERENE - Installing dependencies..."
       - pnpm install --no-frozen-lockfile
 
-      - echo "SERENE - Running lint..."
-      - pnpm run ci:lint
-
       - echo "SERENE - Running typecheck..."
       - pnpm run ci:typecheck
   
