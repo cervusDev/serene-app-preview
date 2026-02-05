@@ -54,7 +54,8 @@ export function Sidebar() {
           gradient-sidebar flex flex-col
           transform transition-transform duration-300 ease-in-out
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
-          lg:translate-x-0 lg:static
+          lg:translate-x-0 lg:fixed lg:z-auto
+
         `}
       >
         {/* Header */}
