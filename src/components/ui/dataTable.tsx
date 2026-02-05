@@ -27,41 +27,53 @@ export function DataTable<T extends { id: number }>({
   };
 
   return (
-    <div className="bg-card rounded-xl border border-border/50 overflow-hidden">
-      <table className="data-table">
-        <thead className="bg-muted/30">
-          <tr>
-            {columns.map((column) => (
-              <th key={String(column.key)}>{column.header}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data.length === 0 ? (
+    <div className="bg-card rounded-xl border border-border/50">
+      <div className="relative w-full overflow-x-auto">
+        <table className="data-table min-w-max">
+          <thead className="bg-muted/30">
             <tr>
-              <td colSpan={columns.length} className="text-center py-8 text-muted-foreground">
-                Nenhum registro encontrado
-              </td>
+              {columns.map((column) => (
+                <th key={String(column.key)} className="whitespace-nowrap">
+                  {column.header}
+                </th>
+              ))}
             </tr>
-          ) : (
-            data.map((item) => (
-              <tr
-                key={item.id}
-                onClick={() => onRowClick?.(item)}
-                className={onRowClick ? "cursor-pointer" : ""}
-              >
-                {columns.map((column) => (
-                  <td key={String(column.key)}>
-                    {column.render
-                      ? column.render(item)
-                      : getValue(item, String(column.key))}
-                  </td>
-                ))}
+          </thead>
+
+          <tbody>
+            {data.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={columns.length}
+                  className="text-center py-8 text-muted-foreground whitespace-nowrap"
+                >
+                  Nenhum registro encontrado
+                </td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+            ) : (
+              data.map((item) => (
+                <tr
+                  key={item.id}
+                  onClick={() => onRowClick?.(item)}
+                  className={onRowClick ? "cursor-pointer" : ""}
+                >
+                  {columns.map((column) => (
+                    <td
+                      key={String(column.key)}
+                      className="whitespace-nowrap"
+                    >
+                      {column.render
+                        ? column.render(item)
+                        : getValue(item, String(column.key))}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
+

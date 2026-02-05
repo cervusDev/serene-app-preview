@@ -86,6 +86,12 @@ export const Header = () => {
               >
                 Terapeutas
               </Link>
+              <Link
+                to="/dashboard"
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              >
+                dashboad
+              </Link>
               <Link to="/agendar" onClick={() => setIsMenuOpen(false)}>
                 <Button className="btn-hero w-full">Agendar</Button>
               </Link>
